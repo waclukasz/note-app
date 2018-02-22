@@ -1,20 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Simple Note App</title>
-    
-<!--    Font Awesome icons -->
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-<!--    Reset CSS -->
+
+    <!--    Open Sans Font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <!--    Roboto Condensed Font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
+
+    <!--    Font Awesome icons -->
+    <link rel="stylesheet" href="css/fontawesome-all.css">
+    <!--    Reset CSS -->
     <link rel="stylesheet" href="css/reset.css">
-<!--    Main Style Sheet -->
+    <!--    Main Style Sheet -->
     <link rel="stylesheet" href="css/style.css">
-    
+
 </head>
-<body>
-   
-   
-    
+
+<body id="app-field">
+
+    <menu>
+
+    </menu>
+
+    <section class="input-section">
+        <div class="input-container" id="input-field">
+            <input type="text" placeholder="Start with your tittle..." id="note-tittle" class="note-head">
+            <textarea placeholder="Your Thoughts" id="input-note" class="note-content hide"></textarea>
+            <div id="nav-field" class="navigation hide">
+                <select name="category" id="categories" class="cats">
+                   <option value="general">General</option>
+                   <option value="private">Private</option>
+                   <option value="work">Work</option>
+               </select>
+                <button id="add" class="add-button"><i class="fas fa-plus"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <section class="note-section">
+<!--
+        <div class="note general">
+            <div class="note-header">Pierwsza Notatka</div>
+            <div class="note-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, cum voluptatem et sed laborum officiis commodi quo minima eos sit neque reprehenderit repudiandae facilis aperiam labore praesentium totam dignissimos iusto.</div>
+            <i class="far fa-edit"></i>
+            <i class="fas fa-trash"></i>
+        </div>
+-->
+    </section>
+
+    <section id="edit" class="edit-section hide">
+        <div class="input-container edit-container" id="edit-input-field">
+            <input type="text" placeholder="Start with your tittle..." id="edit-note-tittle" class="note-head">
+            <textarea placeholder="Your Thoughts" id="edit-input-note" class="note-content"></textarea>
+            <div id="edit-nav-field" class="navigation">
+                <select name="category" id="edit-categories" class="cats">
+                   <option value="general">General</option>
+                   <option value="private">Private</option>
+                   <option value="work">Work</option>
+               </select>
+                <button id="edit-add" class="add-button"><i class="fas fa-plus"></i></button>
+            </div>
+        </div>
+
+    </section>
+
+    <script src="js/main.js"></script>
+
 </body>
+
 </html>

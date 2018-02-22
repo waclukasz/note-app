@@ -1,0 +1,234 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    position: relative;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+menu {
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    border-radius: 0px 0px 15px 15px;
+    background-color: #cbd4db;
+}
+
+.input-section {
+    padding: 100px 7%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-container {
+    width: 70%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0px 0px 15px 0px #00000024;
+    border-radius: 10px;
+}
+
+.input-container input,
+.input-container textarea {
+    min-width: 100%;
+    max-width: 100%;
+    padding: 10px;
+    border: 0px;
+    outline: 0px;
+}
+
+.note-head {
+    height: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #484848;
+}
+
+.note-head::placeholder {
+    font-weight: bold;
+}
+
+.input-container .note-content {
+    margin-top: 10px;
+    padding-top: 0px;
+    min-height: 40px;
+    height: 40px;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+    color: #2e2e2e
+}
+
+.navigation {
+    position: relative;
+    width: 100%;
+    height: 40px;
+}
+
+.cats,
+.add-button {
+    position: absolute;
+    border: 0px;
+    outline: 0px;
+}
+
+.cats {
+    border-left: 3px solid black;
+    bottom: 0px;
+    right: 0px;
+    font-family: 'Open Sans', sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background-color: transparent;
+    color: #464646;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    padding: 0px 5px;
+    border-radius: 0px;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.cats:hover {
+    font-weight: 800;
+}
+
+.add-button {
+    bottom: 0px;
+    left: 10px;
+    height: 30px;
+    width: 30px;
+    font-size: 15px;
+    color: white;
+    background-color: #9de035;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .3s ease;
+}
+
+.add-button > i {
+    position: absolute;
+    border-radius: 30px;
+    top: 49%;
+    left: 49%;
+    transform: translate(-50%, -50%);
+}
+
+.add-button:hover {
+    box-shadow: 0px 0px 15px #bfbfbf;
+}
+
+/* Created Note Style Sheet */
+
+.note-section {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0px 5% 7% 7%;
+}
+
+.note {
+    position: relative;
+    width: 280px;
+    min-height: 250px;
+    max-height: 500px;
+    padding: 20px;
+    margin: 15px;
+    border-left: 5px solid transparent;
+    border-radius: 0px 10px 10px 0px;
+    box-shadow: 0px 0px 15px 0px #00000024;
+}
+
+.note-header {
+    font-size: 20px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 600;
+    color: #3d3d3d;
+    margin: 0px 0px 20px 0px;
+}
+
+.note-text {
+    line-height: 25px;
+    margin-bottom: 40px;
+    color: #555454
+}
+
+.note > i {
+    position: absolute;
+    bottom: 0px;
+    color: #868686;
+    transition: .3s ease-out;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.note > i:first-of-type {
+    right: 40px;
+}
+.note > i:first-of-type:hover {
+    color: #9de035;
+}
+.note > i:first-of-type::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 2px;
+    height: 26px;
+    bottom: 4px;
+    right: -5px;
+    background-color: #868686;
+}
+
+.note > i:last-of-type {
+    right: 0px;
+}
+.note > i:last-of-type:hover {
+    color: #c31717;
+}
+
+/* Section Edit */
+
+.edit-section {
+    position: absolute;
+    top: 0px;
+    left: 0px;    
+    height: 100vh;
+    width: 100vw;
+    background-color: #0f121f8a;
+    padding: 100px 7%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-section.hide {
+    display: none;
+}
+
+.edit-container {
+    background-color: white;
+}
+
+.general {
+    border-left-color: #c31717;
+}
+
+.private {
+    border-left-color: #9de035;
+}
+
+.work {
+    border-left-color: #1c61fd;
+    
+}
