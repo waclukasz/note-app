@@ -21,9 +21,23 @@
 
 <body id="app-field">
 
-    <menu>
-
-    </menu>
+    <div class="menu">
+        <div class="time">
+            <h2>24 FEB 2018</h2>
+        </div>
+        <div class="header">
+            <h1>Save your thoughts</h1>
+        </div>
+        <div class="sort">
+            <h2>Show Category</h2>
+            <select name="sort" id="sort">
+                <option value="All" selected>All</option>
+                <option value="general">General</option>
+                <option value="private">Private</option>
+                <option value="work">Work</option>
+            </select>
+        </div>
+    </div>
 
     <section class="input-section">
         <div class="input-container" id="input-field">
@@ -34,22 +48,12 @@
                    <option value="general">General</option>
                    <option value="private">Private</option>
                    <option value="work">Work</option>
-               </select>
+                </select>
                 <button id="add" class="add-button"><i class="fas fa-plus"></i></button>
             </div>
         </div>
     </section>
-
-    <section class="note-section">
-<!--
-        <div class="note general">
-            <div class="note-header">Pierwsza Notatka</div>
-            <div class="note-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus, cum voluptatem et sed laborum officiis commodi quo minima eos sit neque reprehenderit repudiandae facilis aperiam labore praesentium totam dignissimos iusto.</div>
-            <i class="far fa-edit"></i>
-            <i class="fas fa-trash"></i>
-        </div>
--->
-    </section>
+    <section class="note-section"></section>
 
     <section id="edit" class="edit-section hide">
         <div class="input-container edit-container" id="edit-input-field">

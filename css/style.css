@@ -11,30 +11,88 @@ body {
     display: block;
 }
 
-menu {
+.menu {
     position: fixed;
     width: 100%;
-    height: 60px;
+    height: 70px;
     border-radius: 0px 0px 15px 15px;
-    background-color: #cbd4db;
+    z-index: 10;
+    padding: 0px 5%;
+    background-color: #557dde;
+    box-shadow: -1px 20px 12px #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.time,
+.sort {
+    line-height: 70px;
+}
+
+.time h2,
+.sort h2 {
+    color: white;  
+    font-weight: 100;
+    letter-spacing: 1px;
+    font-size: 15px;
+}
+.sort {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.sort select {
+    display: block;
+    height: 100%;
+    width: 90px;
+    background-color: #557dde;
+    color: white;
+    outline: 0px;
+    border: 0;
+    font-size: 15px;
+}
+
+.header {
+    line-height: 70px;
+    text-align: center;
+    width: 300px;
+    background-color: #ffffff;
+    border-radius: 5px 5px 0px 0px;
+} 
+
+.header h1 {
+    font-weight: 100;
+    color: #364aa2;
+    font-size: 27px;
 }
 
 .input-section {
-    padding: 100px 7%;
+    width: 100%;
+    position: absolute;
+    padding: 100px 0px 80px 0px;
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
+    
+    background-color: white;
+    z-index: 5;
+    box-shadow: 0px 0px 40px 8px #ffffffd9;
 }
 
 .input-container {
-    width: 70%;
+    width: 50%;
     padding: 10px;
     display: flex;
     flex-direction: column;
     position: relative;
     box-shadow: 0px 0px 15px 0px #00000024;
     border-radius: 10px;
+    background-color: white;
+
 }
 
 .input-container input,
@@ -127,25 +185,26 @@ menu {
 }
 
 /* Created Note Style Sheet */
-
 .note-section {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    padding: 0px 5% 7% 7%;
+    padding: 250px 5% 7% 7%;
 }
 
 .note {
     position: relative;
-    width: 280px;
+    min-width: 280px;
+    max-width: 380px;
     min-height: 250px;
     max-height: 500px;
     padding: 20px;
     margin: 15px;
-    border-left: 5px solid transparent;
-    border-radius: 0px 10px 10px 0px;
+    border-bottom: 5px solid transparent;
+    border-radius: 5px 5px 5px 5px;
     box-shadow: 0px 0px 15px 0px #00000024;
+    background-color: white;
 }
 
 .note-header {
@@ -197,9 +256,8 @@ menu {
 }
 
 /* Section Edit */
-
 .edit-section {
-    position: absolute;
+    position: fixed;
     top: 0px;
     left: 0px;    
     height: 100vh;
@@ -210,6 +268,7 @@ menu {
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
+    z-index: 10000;
 }
 
 .edit-section.hide {
@@ -221,14 +280,13 @@ menu {
 }
 
 .general {
-    border-left-color: #c31717;
+    border-bottom-color: #c31717;
 }
 
 .private {
-    border-left-color: #9de035;
+    border-bottom-color: #9de035;
 }
 
 .work {
-    border-left-color: #1c61fd;
-    
+    border-bottom-color: #1c61fd;
 }

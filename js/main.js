@@ -1,14 +1,16 @@
-var notesData = {
+var notesData = (localStorage.getItem('savedNotes')) ? JSON.parse(localStorage.getItem('savedNotes')) : {
     titte: [],
     text: [],
     category: [],
-    allNotes: 0
 }
 
 var noteIdData = [];
+var notesCounter = 0; 
 
-var notesCounter = (notesData.allNotes === 0) ? 0 : notesData.allNotes;
+// Just for identification what note is editing
 var noteID;
+
+renderNotes();
 
 // Expand Create Note Area
 document.getElementById('input-field').addEventListener('click', function (e) {
@@ -23,13 +25,13 @@ document.getElementById('input-field').addEventListener('click', function (e) {
 // Hide 'Create Note' Area function
 document.getElementById('app-field').addEventListener('click', hideInputs);
 
+// Increasing heigh of Text Input for beter readability
 document.getElementById('input-note').addEventListener('keydown', function (e) {
     var inputNote = this;
 
     if (e.keyCode === 13) {
         inputNote.style.height = inputNote.offsetHeight + 10 + "px";
     }
-
 });
 
 // Adding new note
@@ -42,19 +44,57 @@ document.getElementById('add').addEventListener('click', function (e) {
 
     if (tittleValue && noteValue || tittleValue) {
         noteIdData.push("n" + notesCounter);
-        
+
         addNote(tittleValue, noteValue, categoryValue);
-        
+
         notesData.titte.push(tittleValue);
         notesData.text.push(noteValue);
         notesData.category.push(categoryValue);
         
-        
-        
-        console.log(notesData);
-        console.log(noteIdData);
+        saveNotes();
     }
 });
+
+// Adding changes to note - Editing 
+document.getElementById('edit-add').addEventListener('click', function () {
+    var editSection = document.getElementById('edit');
+    var editTittle = document.getElementById('edit-note-tittle').value;
+    var editNote = document.getElementById('edit-input-note').value;
+    var editCategory = document.getElementById('edit-categories').value;
+
+    var noteTittle = document.querySelector("div[data-noteid=" + noteID + ']').childNodes[0];
+    var noteText = document.querySelector("div[data-noteid=" + noteID + ']').childNodes[1];
+    var noteCategory = document.querySelector("div[data-noteid=" + noteID + ']');
+    var editedNoteId = noteIdData.indexOf(noteCategory.getAttribute('data-noteid'));
+
+    noteCategory.classList.remove(noteCategory.classList[1]);
+    noteCategory.classList.add(editCategory);
+
+    noteTittle.innerText = editTittle;
+    noteText.innerText = editNote;
+
+    notesData.titte[editedNoteId] = editTittle;
+    notesData.text[editedNoteId] = editNote;
+    notesData.category[editedNoteId] = editCategory;
+
+    editSection.classList.add('hide');
+    
+    saveNotes();
+});
+
+function renderNotes() {
+    if (notesData.category.length) {
+        for (i = 0; i < notesData.category.length; i++) {
+            noteIdData.push("n" + notesCounter);
+            addNote(notesData.titte[i], notesData.text[i], notesData.category[i]);
+            
+        }
+    }
+}
+
+function saveNotes() {
+    localStorage.setItem('savedNotes', JSON.stringify(notesData));
+}
 
 // Hide 'Create Note' Area
 function hideInputs(e) {
@@ -106,14 +146,14 @@ function addNote(tittleValue, noteValue, category) {
     // Remove created note
     removeButton.addEventListener('click', function () {
         noteSection.removeChild(noteContainer);
-        
+
         notesData.titte.splice(notesData.titte.indexOf(tittleValue), 1);
         notesData.text.splice(notesData.text.indexOf(noteValue), 1);
         notesData.category.splice(notesData.category.indexOf(category), 1);
-        notesCounter--;
-        notesData.allNotes--;
-        
+
         noteIdData.splice(noteIdData.indexOf(noteContainer.getAttribute('data-noteid')), 1);
+        notesCounter = getLastNote();
+        saveNotes();
     })
 
     // Adding edit to note
@@ -135,31 +175,12 @@ function addNote(tittleValue, noteValue, category) {
     hideInputs();
     // incrementing quantity of notes
     notesCounter++
-    notesData.allNotes++
 }
 
-// Adding changes to note - Editing 
-document.getElementById('edit-add').addEventListener('click', function () {
-    var editSection = document.getElementById('edit');
-    var editTittle = document.getElementById('edit-note-tittle').value;
-    var editNote = document.getElementById('edit-input-note').value;
-    var editCategory = document.getElementById('edit-categories').value;
+// See what is the ID Number of last created note
+function getLastNote() {
+    var lastNote = noteIdData[noteIdData.length - 1].split('');
+    var lastChar = parseInt(lastNote[lastNote.length - 1]) + 1;
 
-    var noteTittle = document.querySelector("div[data-noteid=" + noteID + ']').childNodes[0];
-    var noteText = document.querySelector("div[data-noteid=" + noteID + ']').childNodes[1];
-    var noteCategory = document.querySelector("div[data-noteid=" + noteID + ']');
-    var editedNoteId = noteIdData.indexOf(noteCategory.getAttribute('data-noteid'));
-    
-
-    noteCategory.classList.remove(noteCategory.classList[1]);
-    noteCategory.classList.add(editCategory);
-
-    noteTittle.innerText = editTittle;
-    noteText.innerText = editNote;
-    
-    notesData.titte[editedNoteId] = editTittle;
-    notesData.text[editedNoteId] = editNote;
-    notesData.category[editedNoteId] = editCategory;
-    
-    editSection.classList.add('hide');
-});
+    return lastChar
+}
