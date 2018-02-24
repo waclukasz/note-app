@@ -5,12 +5,15 @@ var notesData = (localStorage.getItem('savedNotes')) ? JSON.parse(localStorage.g
 }
 
 var noteIdData = [];
-var notesCounter = 0; 
+var notesCounter = 0;
 
 // Just for identification what note is editing
 var noteID;
 
 renderNotes();
+calendar();
+
+document.getElementById('search').addEventListener('change', showCategories);
 
 // Expand Create Note Area
 document.getElementById('input-field').addEventListener('click', function (e) {
@@ -50,7 +53,7 @@ document.getElementById('add').addEventListener('click', function (e) {
         notesData.titte.push(tittleValue);
         notesData.text.push(noteValue);
         notesData.category.push(categoryValue);
-        
+
         saveNotes();
     }
 });
@@ -78,7 +81,7 @@ document.getElementById('edit-add').addEventListener('click', function () {
     notesData.category[editedNoteId] = editCategory;
 
     editSection.classList.add('hide');
-    
+
     saveNotes();
 });
 
@@ -87,7 +90,7 @@ function renderNotes() {
         for (i = 0; i < notesData.category.length; i++) {
             noteIdData.push("n" + notesCounter);
             addNote(notesData.titte[i], notesData.text[i], notesData.category[i]);
-            
+
         }
     }
 }
@@ -183,4 +186,47 @@ function getLastNote() {
     var lastChar = parseInt(lastNote[lastNote.length - 1]) + 1;
 
     return lastChar
+}
+
+function showCategories() {
+    var selectedCategory = document.getElementById('search').value;
+    var allNotes = document.querySelector('.note-section').children;
+    var general = document.querySelectorAll('.general');
+    var private = document.querySelectorAll('.private');
+    var work = document.querySelectorAll('.work');
+
+    if (selectedCategory === 'all') {
+        for (i = 0; i < allNotes.length; i++) {
+            allNotes[i].classList.remove('hide');
+        }
+    } else if (selectedCategory === 'general') {
+        for (i = 0; i < allNotes.length; i++) {
+            allNotes[i].classList.add('hide');
+        }
+        for (j = 0; j < general.length; j++) {
+            general[j].classList.remove('hide');
+        }
+    } else if (selectedCategory === 'private') {
+        for (i = 0; i < allNotes.length; i++) {
+            allNotes[i].classList.add('hide');
+        }
+        for (j = 0; j < private.length; j++) {
+            private[j].classList.remove('hide');
+        }
+    } else if (selectedCategory === 'work') {
+        for (i = 0; i < allNotes.length; i++) {
+            allNotes[i].classList.add('hide');
+        }
+        for (j = 0; j < private.length; j++) {
+            work[j].classList.remove('hide');
+        }
+    }
+}
+
+function calendar() {
+    var d = new Date()
+    var taskData = document.getElementById('date');
+    var months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+
+    taskData.innerText = d.getDate() + " " + months[d.getMonth()] + " " + d.getFullYear();
 }

@@ -28,6 +28,7 @@ body {
 .time,
 .sort {
     line-height: 70px;
+    width: 30%;
 }
 
 .time h2,
@@ -58,7 +59,7 @@ body {
 .header {
     line-height: 70px;
     text-align: center;
-    width: 300px;
+    width: 40%;
     background-color: #ffffff;
     border-radius: 5px 5px 0px 0px;
 } 
@@ -72,7 +73,7 @@ body {
 .input-section {
     width: 100%;
     position: absolute;
-    padding: 100px 0px 80px 0px;
+    padding: 130px 0px 80px 0px;
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
@@ -147,12 +148,12 @@ body {
     text-transform: uppercase;
     background-color: transparent;
     color: #464646;
-    -moz-appearance: none;
-    -webkit-appearance: none;
     padding: 0px 5px;
     border-radius: 0px;
     cursor: pointer;
     transition: .3s ease;
+    -moz-appearance: none;
+    -webkit-appearance: none;
 }
 
 .cats:hover {
@@ -277,6 +278,7 @@ body {
 
 .edit-container {
     background-color: white;
+    width: 70%;
 }
 
 .general {
