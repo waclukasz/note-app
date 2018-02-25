@@ -1,8 +1,4 @@
-var notesData = (localStorage.getItem('savedNotes')) ? JSON.parse(localStorage.getItem('savedNotes')) : {
-    titte: [],
-    text: [],
-    category: [],
-}
+var notesData = (localStorage.getItem('savedNotes')) ? JSON.parse(localStorage.getItem('savedNotes')) : {titte: [], text: [], category: []};
 
 var noteIdData = [];
 var notesCounter = 0;
@@ -17,9 +13,10 @@ document.getElementById('search').addEventListener('change', showCategories);
 
 // Expand Create Note Area
 document.getElementById('input-field').addEventListener('click', function (e) {
+    e.stopPropagation();
+
     var textField = document.getElementById('input-note');
     var navigationField = document.getElementById('nav-field');
-    e.stopImmediatePropagation();
 
     textField.classList.remove('hide');
     navigationField.classList.remove('hide');
@@ -87,9 +84,9 @@ document.getElementById('edit-add').addEventListener('click', function () {
 
 function renderNotes() {
     if (notesData.category.length) {
-        for (i = 0; i < notesData.category.length; i++) {
+        for (a = 0; a < notesData.category.length; a++) {
             noteIdData.push("n" + notesCounter);
-            addNote(notesData.titte[i], notesData.text[i], notesData.category[i]);
+            addNote(notesData.titte[a], notesData.text[a], notesData.category[a]);
 
         }
     }
@@ -157,6 +154,7 @@ function addNote(tittleValue, noteValue, category) {
         noteIdData.splice(noteIdData.indexOf(noteContainer.getAttribute('data-noteid')), 1);
         notesCounter = getLastNote();
         saveNotes();
+        showCategories();
     })
 
     // Adding edit to note
@@ -171,18 +169,21 @@ function addNote(tittleValue, noteValue, category) {
         editNote.value = noteText.innerText;
         editCategory.value = noteContainer.classList[1];
 
+        showCategories();
+        
         // Pointing to THIS note in edit section
         noteID = noteContainer.getAttribute('data-noteid');
     })
 
     hideInputs();
+    showCategories();
     // incrementing quantity of notes
     notesCounter++
 }
 
 // See what is the ID Number of last created note
 function getLastNote() {
-    var lastNote = noteIdData[noteIdData.length - 1].split('');
+    var lastNote = (noteIdData.length) ? noteIdData[noteIdData.length - 1].split('') : [0];
     var lastChar = parseInt(lastNote[lastNote.length - 1]) + 1;
 
     return lastChar
@@ -217,7 +218,7 @@ function showCategories() {
         for (i = 0; i < allNotes.length; i++) {
             allNotes[i].classList.add('hide');
         }
-        for (j = 0; j < private.length; j++) {
+        for (j = 0; j < work.length; j++) {
             work[j].classList.remove('hide');
         }
     }
