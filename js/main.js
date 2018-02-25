@@ -82,6 +82,16 @@ document.getElementById('edit-add').addEventListener('click', function () {
     saveNotes();
 });
 
+// Hide Edit Section when you discard changes by clicking out of inputs
+document.getElementById('edit').addEventListener('click', function(e) {    
+    this.classList.add('hide');
+});    
+document.getElementById('edit-input-field').addEventListener('click', function(e){
+    e.stopPropagation();
+})
+
+
+// Creating previous Notes List
 function renderNotes() {
     if (notesData.category.length) {
         for (a = 0; a < notesData.category.length; a++) {
@@ -92,18 +102,20 @@ function renderNotes() {
     }
 }
 
+// Save all Notes Data to local storage as a JSON File
 function saveNotes() {
     localStorage.setItem('savedNotes', JSON.stringify(notesData));
 }
 
 // Hide 'Create Note' Area
-function hideInputs(e) {
+function hideInputs() {
     var textField = document.getElementById('input-note');
     var navigationField = document.getElementById('nav-field');
 
     textField.classList.add('hide');
     navigationField.classList.add('hide');
-
+    
+    // reset input height
     textField.style.height = 40 + 'px';
 }
 
