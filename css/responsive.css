@@ -1,0 +1,83 @@
+@media (max-width: 954px) {
+
+    .note {
+        width: 95%;
+        max-width: none;
+    }
+}
+
+
+@media (max-width: 890px) {
+
+    .menu {
+        height: auto;
+        max-height: 140px;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 0px;
+    }
+
+    .time,
+    .sort {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        width: 50%;
+    }
+
+    .header {
+        width: 100%;
+        order: -1;
+        border-radius: 0px 0px 20px 20px;
+
+    }
+    
+    .input-section {
+        padding-top: 180px;
+    }
+    
+    .input-container {
+        width: 95%;
+    }
+    
+    .edit-container .note-content {
+        min-height: 100px;
+    }
+
+}
+
+@media (max-width: 420px) {
+    .menu {
+        position: absolute;
+        max-height: 240px;
+        min-width: 320px;
+    }
+
+    .time,
+    .sort {
+        width: 100%;
+        justify-content: flex-start;
+        padding-left: 70px;
+    }
+
+    .time {
+        order: 1;
+    }
+
+    .input-section {
+        padding-top: 250px;
+    }
+
+    .input-container {
+        width: 95%;
+    }
+
+    .note-section {
+        padding: 20px 0px;
+    }
+
+}

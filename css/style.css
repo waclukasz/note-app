@@ -44,6 +44,7 @@ body {
     flex-wrap: nowrap;
     justify-content: center;
     align-content: center;
+    align-items: center;
 }
 
 .sort select {
@@ -73,7 +74,7 @@ body {
 }
 
 .input-section {
-    padding: 130px 0px 80px 0px;
+    padding: 130px  7% 80px 7%;
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
@@ -84,7 +85,7 @@ body {
 }
 
 .input-container {
-    width: 50%;
+    width: 55%;
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -185,7 +186,7 @@ body {
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    padding: 0px 5% 7% 7%;
+    padding: 0px 7% 5% 7%;
 }
 
 .note {
